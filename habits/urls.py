@@ -8,8 +8,8 @@ from habits.views import HabitViewSet, PublicHabitListAPIView
 app_name = HabitsConfig.name
 
 router = SimpleRouter()
-router.register('', HabitViewSet, basename='habits')
+router.register("", HabitViewSet, basename="habits")
 
 urlpatterns = [
-    path('public/', PublicHabitListAPIView.as_view(), name='public'),
+    path("public/", PublicHabitListAPIView.as_view(), name="public"),
 ] + router.urls
