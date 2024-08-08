@@ -10,18 +10,19 @@ from habits.permissions import IsOwner
 from habits.serializers import HabitSerializer
 
 
-@method_decorator(name='list', decorator=swagger_auto_schema(
-    operation_description="Список привычек"))
+@method_decorator(
+    name="list", decorator=swagger_auto_schema(operation_description="Список привычек")
+)
 class HabitViewSet(viewsets.ModelViewSet):
     serializer_class = HabitSerializer
     permission_classes = [IsAuthenticated, IsOwner]
     pagination_class = HabitPaginator
     filter_backends = [SearchFilter, OrderingFilter]
-    search_fields = ('action', )
-    ordering_fields = ('time',)
+    search_fields = ("action",)
+    ordering_fields = ("time",)
 
     def get_queryset(self):
-        return Habit.objects.filter(user=self.request.user.pk).order_by('id')
+        return Habit.objects.filter(user=self.request.user.pk).order_by("id")
 
     def perform_create(self, serializer):
         new_habit = serializer.save()
