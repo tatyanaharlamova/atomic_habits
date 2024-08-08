@@ -26,3 +26,4 @@
   celery -A config worker -l INFO -P eventlet  # для Windows
 - в другом терминале запустите celery beat командой:
   celery -A config beat -l info -S django
+- зайдите в телеграм бот и нажмите START
